@@ -1,6 +1,8 @@
-from flask import Flask
+from flask import Flask, g
+from flask_cors import CORS
 
 import models
+from resources.content import blog
 
 DEBUG = True
 PORT = 8000
@@ -20,6 +22,8 @@ def after_request(response):
     g.db.close()
     return response
 
+CORS(blog, origins=['http://localhost:3000'], supports_credentials=True)
+app.register_blueprint(blog, url_prefix='/v1/blog')
 
 @app.route("/")
 def index():
