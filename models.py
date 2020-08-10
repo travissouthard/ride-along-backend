@@ -1,11 +1,12 @@
+from flask_login import UserMixin
 from peewee import *
 import datetime
 
 DATABASE = SqliteDatabase("content.sqlite")
 
-class Admin(Model):
-    username = CharField()
-    email = CharField()
+class Admin(UserMixin, Model):
+    username = CharField(unique=True)
+    email = CharField(unique=True)
     password = CharField()
 
     class Meta:
@@ -14,7 +15,7 @@ class Admin(Model):
 class Blog(Model):
     title = CharField()
     text = CharField()
-    image = BlobField() # Actual image
+    image = CharField() # Actual image
     date = DateField()
     author = CharField()
     trip = CharField()
@@ -29,7 +30,7 @@ class Video(Model):
     title = CharField()
     text = CharField()
     url = CharField() # url of posted video for embed
-    thumbnail = BlobField()
+    thumbnail = CharField()
     date = DateField()
     trip = CharField()
     # admin info

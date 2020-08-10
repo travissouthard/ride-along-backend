@@ -17,6 +17,6 @@ def get_blog_posts():
 @blog.route("/", methods=["POST"])
 def create_blog():
     payload = request.get_json()
-    blog = model.Blog.create(**payload)
+    blog = models.Blog.create(**payload)
     blog_dict = model_to_dict(blog)
-    return jsonify(data=dog_dict, status={"code": 201, "message": "Successfully made the blog!"})
+    return jsonify(data=blog_dict, status={"code": 201, "message": "Successfully made the blog!"})
