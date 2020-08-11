@@ -4,6 +4,7 @@ from flask_login import LoginManager
 
 import models
 from resources.content import blog
+from resources.content import video
 from resources.admin import user
 
 DEBUG = True
@@ -38,6 +39,9 @@ def after_request(response):
 
 CORS(blog, origins=['http://localhost:3000'], supports_credentials=True)
 app.register_blueprint(blog, url_prefix='/v1/')
+
+CORS(video, origins=['http://localhost:3000'], supports_credentials=True)
+app.register_blueprint(video, url_prefix='/v1/')
 
 CORS(user, origins=['http://localhost:3000'], supports_credentials=True)
 app.register_blueprint(user, url_prefix='/user')
