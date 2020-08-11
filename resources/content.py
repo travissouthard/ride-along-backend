@@ -5,7 +5,7 @@ from playhouse.shortcuts import model_to_dict
 
 blog = Blueprint("blog", "admin")
 
-@blog.route("/", methods=["GET"])
+@blog.route("/blog", methods=["GET"])
 def get_blog_posts():
     try:
         blogs = [model_to_dict(blog) for blog in models.Blog.select()]
@@ -14,7 +14,7 @@ def get_blog_posts():
     except models.DoesNotExist:
         return jsonify(data={}, status={"code": 400, "message": "There are no blog posts, sorry!"})
 
-@blog.route("/", methods=["POST"])
+@blog.route("/blog", methods=["POST"])
 def create_blog():
     payload = request.get_json()
     blog = models.Blog.create(**payload)
