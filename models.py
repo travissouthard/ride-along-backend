@@ -45,7 +45,7 @@ class Product(Model):
     description = CharField()
     price = FloatField()
     quantity = IntegerField()
-    image = BlobField()
+    image = CharField()
     discount = FloatField(default=1)
     trip = CharField()
     # admin info
