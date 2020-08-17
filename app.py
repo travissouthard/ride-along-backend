@@ -53,7 +53,7 @@ app.register_blueprint(user, url_prefix='/user')
 
 @app.route("/")
 def index():
-    return "Hi"
+    return "Visit ridealongpictures.heruko.com to see what this app is for! Or follow us on Instagram at @ridealongpictures or on Twitter at @ridealongpics"
 
 if 'ON_HEROKU' in os.environ: 
     print('\non heroku!')
