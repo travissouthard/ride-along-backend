@@ -19,7 +19,7 @@ class Admin(UserMixin, Model):
 
 class Blog(Model):
     title = CharField()
-    text = CharField()
+    text = TextField()
     image = CharField() # Actual image
     date = DateField()
     author = CharField()
@@ -33,7 +33,7 @@ class Blog(Model):
 
 class Video(Model):
     title = CharField()
-    text = CharField()
+    text = TextField()
     url = CharField() # url of posted video for embed
     thumbnail = CharField()
     date = DateField()
