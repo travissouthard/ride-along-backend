@@ -39,16 +39,16 @@ def after_request(response):
     g.db.close()
     return response
 
-CORS(blog, origins=['http://localhost:3000'], supports_credentials=True)
+CORS(blog, origins=['http://localhost:3000', "https://ridealongpictures.herokuapp.com/"], supports_credentials=True)
 app.register_blueprint(blog, url_prefix='/v1/')
 
-CORS(video, origins=['http://localhost:3000'], supports_credentials=True)
+CORS(video, origins=['http://localhost:3000', "https://ridealongpictures.herokuapp.com/"], supports_credentials=True)
 app.register_blueprint(video, url_prefix='/v1/')
 
-CORS(product, origins=['http://localhost:3000'], supports_credentials=True)
+CORS(product, origins=['http://localhost:3000', "https://ridealongpictures.herokuapp.com/"], supports_credentials=True)
 app.register_blueprint(product, url_prefix='/v1/')
 
-CORS(user, origins=['http://localhost:3000'], supports_credentials=True)
+CORS(user, origins=['http://localhost:3000', "https://ridealongpictures.herokuapp.com/"], supports_credentials=True)
 app.register_blueprint(user, url_prefix='/user')
 
 @app.route("/")
