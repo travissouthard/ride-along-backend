@@ -1,8 +1,13 @@
+import os
 from flask_login import UserMixin
 from peewee import *
 import datetime
+from playhouse.db_url import connect
 
-DATABASE = SqliteDatabase("content.sqlite")
+if 'ON_HEROKU' in os.environ: # later we will manually add this env var 
+    DATABASE = connect(os.environ.get('DATABASE_URL')) # heroku will add this env var for you when you provision the Heroku Postgres Add-on
+else:
+    DATABASE = SqliteDatabase("content.sqlite")
 
 class Admin(UserMixin, Model):
     username = CharField(unique=True)
